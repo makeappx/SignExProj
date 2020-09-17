@@ -1,0 +1,15 @@
+C:\Users\burla\source\repos\SignExProj\SignExProj\bin\Debug\SignExProj.exe.config
+C:\Users\burla\source\repos\SignExProj\SignExProj\bin\Debug\SignExProj.exe
+C:\Users\burla\source\repos\SignExProj\SignExProj\bin\Debug\SignExProj.pdb
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.csprojAssemblyReference.cache
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\MainWindow.g.cs
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\App.g.cs
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj_MarkupCompile.cache
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj_MarkupCompile.lref
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\MainWindow.baml
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.g.resources
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.Properties.Resources.resources
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.csproj.GenerateResource.cache
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.csproj.CoreCompileInputs.cache
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.exe
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.pdb
