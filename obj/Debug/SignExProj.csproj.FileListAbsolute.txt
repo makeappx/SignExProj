@@ -13,3 +13,5 @@ C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.csproj.Ge
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.csproj.CoreCompileInputs.cache
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.exe
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\SignExProj.pdb
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\ProcessChoose.g.cs
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\ProcessChoose.baml

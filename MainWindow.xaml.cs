@@ -17,17 +17,10 @@ namespace SignExProj
         public MainWindow()
         {
             InitializeComponent();
-            System.Timers.Timer t = new System.Timers.Timer(2000);
-            t.Elapsed += (object _, ElapsedEventArgs __) =>
-            {
-                Dispatcher.Invoke(() => 
-                ProcessesList.ItemsSource = 
-                Process.GetProcesses().Select(x => (x.ProcessName, x.Id)).OrderBy(x => x.ProcessName));
-            };
-            t.Enabled = true;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ProcessLabel.Content == "") return; 
             if (!CheckLength()) return;
             byte[] bytes_scan;
             byte[] bytes_write;
@@ -74,22 +67,22 @@ namespace SignExProj
             }
             return true;
         }
-
-        private void RefreshP(object sender, MouseButtonEventArgs e)
-        {
-         
-        }
-        private void CloseP(object sender, MouseButtonEventArgs e) =>
-            process.Close();
-        private void KillP(object sender, MouseButtonEventArgs e) =>
-            process.Kill();
-        private void ProcessesList_SelectionChanged(object sender, SelectionChangedEventArgs e) =>
-            process = Process.GetProcessById((((string, int))ProcessesList.SelectedItem).Item2);
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string s = Text1.Text;
             Text1.Text = Text2.Text;
             Text2.Text = s;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            (new ProcessChoose()).ShowDialog();
+            try
+            {
+                process = (Process)Application.Current.Properties["process"];
+                ProcessLabel.Content = process.ProcessName;
+            }
+            catch { }
         }
     }
 }
