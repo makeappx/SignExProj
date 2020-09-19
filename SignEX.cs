@@ -24,11 +24,11 @@ public class SignEX
 		Process[] p = Process.GetProcessesByName(name);
 		return p.Length > 0 ? p[0].Handle : (IntPtr)(-1);
     }
-    private int SignScan(byte[] bytes_scan) 
+    private unsafe int SignScan(byte[] bytes_scan) 
     {
         MEMORY_BASIC_INFORMATION zero = new MEMORY_BASIC_INFORMATION();
         int baseAddress = 0, num = 0;
-		byte[] numArray;
+		byte* numArray;
 		while (baseAddress <= Int32.MaxValue)
         {
             VirtualQueryEx(handle, (IntPtr)baseAddress, out zero, (uint)Marshal.SizeOf(typeof(MEMORY_BASIC_INFORMATION)));
@@ -37,14 +37,15 @@ public class SignEX
 				baseAddress = (int)zero.BaseAddress + (int)zero.RegionSize;
 				try
 				{
-					numArray = new byte[(int)zero.RegionSize];
+                    numArray = (byte*)Marshal.AllocHGlobal((int)zero.RegionSize);
+                    //numArray = new byte[(int)zero.RegionSize];
 				}
 				catch { return -1; }
 				ReadProcessMemory(handle, zero.BaseAddress, numArray, (int)zero.RegionSize, out _);
 				int x = -1;
 				while (++x < (int)zero.RegionSize)
 					if (numArray[x] == bytes_scan[0])
-						for (int i = 0; i < (int)bytes_scan.Length; i++)
+						for (int i = 0; i < bytes_scan.Length; i++)
 							if (numArray[i + x] != bytes_scan[i])
 							{
 								num = 0;
@@ -53,7 +54,7 @@ public class SignEX
 							else
 							{
 								num++;
-								if (num == (int)bytes_scan.Length)
+								if (num == bytes_scan.Length)
 									return (int)zero.BaseAddress + x;
 							}
 			}
@@ -82,7 +83,7 @@ public class SignEX
 	[DllImport("kernel32.dll", CharSet = CharSet.None, ExactSpelling = false)]
 	public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 	[DllImport("kernel32.dll", CharSet = CharSet.None, ExactSpelling = false, SetLastError = true)]
-	private static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out int lpNumberOfBytesRead);
+	private unsafe static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte* lpBuffer, int dwSize, out int lpNumberOfBytesRead);
 	[DllImport("kernel32.dll", CharSet = CharSet.None, ExactSpelling = false, SetLastError = true)]
     private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, UIntPtr lpNumberOfBytesWritten);
     private void WriteProcessMemory(IntPtr handle, IntPtr addr, object bytes_write, uint length, out UIntPtr dammy)

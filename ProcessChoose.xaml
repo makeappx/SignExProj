@@ -5,10 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SignExProj"
       mc:Ignorable="d"
-      Title="Choose process" Width="438.5" Height="207.5" ResizeMode="NoResize" Topmost="True">
+      Title="Choose process" Width="390" Height="207.5" ResizeMode="CanResizeWithGrip" MinWidth="390" MinHeight="228">
 
     <Grid Background="White">
-        <ListView x:Name="ProcessesList" HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="195" SelectionChanged="ProcessesList_SelectionChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="ProcessesList" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" SelectionChanged="ProcessesList_SelectionChanged">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <Label MouseDown="CloseP">Close</Label>
@@ -16,16 +25,24 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="205,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="ID:" HorizontalAlignment="Left" Margin="205,25,0,0" VerticalAlignment="Top"/>
-        <Label Content="Responding:" HorizontalAlignment="Left" Margin="205,40,0,0" VerticalAlignment="Top"/>
-        <Label Content="Start time:" HorizontalAlignment="Left" Margin="205,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Readonly:" HorizontalAlignment="Left" Margin="205,70,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Name" Content="" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="ID" Content="" HorizontalAlignment="Left" Margin="285,25,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Responding" Content="" HorizontalAlignment="Left" Margin="285,40,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Start" Content="" HorizontalAlignment="Left" Margin="285,55,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Readonly" Content="" HorizontalAlignment="Left" Margin="285,70,0,0" VerticalAlignment="Top"/>
-        <Button Click="Button_Click" Content="Select" HorizontalAlignment="Left" Margin="345,140,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}"/>
+        <ScrollViewer Grid.Column="1" Grid.Row="0" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Label Content="Name:"/>
+                <Label Content="ID:"/>
+                <Label Content="Responding:"/>
+                <Label Content="Start time:"/>
+                <Label Content="Readonly:"/>
+            </StackPanel>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="2" Grid.Row="0" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Label x:Name="Name" Content="" />
+                <Label x:Name="ID" Content="" />
+                <Label x:Name="Responding" Content="" />
+                <Label x:Name="Start" Content=""/>
+                <Label x:Name="Readonly" Content="" />
+            </StackPanel>
+        </ScrollViewer>
+        <Button Grid.Row="1" Grid.Column="2" Click="Button_Click" Content="Select" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" Width="75" Background="{x:Null}" Height="20"/>
     </Grid>
 </Window>
