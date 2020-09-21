@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\burla\source\repos\SignExProj\SignExProj\obj\Debug\
+C:\Users\burla\source\repos\SignExProj\SignExProj\obj\x64\Debug\
 SignExProj
 none
 false
 DEBUG;TRACE
 C:\Users\burla\source\repos\SignExProj\SignExProj\App.xaml
-2613719984
+3-1250770178
 
-8968783420
+9394759582
 13-1505183044
-MainWindow.xaml;ProcessChoose.xaml;
+MainWindow.xaml;ProcessChoose.xaml;ValueChange.xaml;
 
 True
 

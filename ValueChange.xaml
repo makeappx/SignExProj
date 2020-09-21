@@ -1,0 +1,24 @@
+﻿<Window x:Class="SignExProj.ValueChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Value change" Height="105" Width="232" ResizeMode="NoResize">
+    <Grid>
+        <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="172"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="187,10,0,0" VerticalAlignment="Top" Width="25" Height="23" Click="Button_Click"/>
+        <StackPanel x:Name="bottomPanel" Orientation="Horizontal" Margin="10,35,0,0">
+            <ComboBox x:Name="ValueBox" VerticalAlignment="Center" Width="59" SelectedIndex="0" Grid.Row="1">
+                <System:String>Value</System:String>
+                <System:String>Array</System:String>
+            </ComboBox>
+            <Label Content="in" VerticalAlignment="Center" Grid.Row="1"/>
+            <ComboBox x:Name="BaseBox" VerticalAlignment="Center" Width="50" SelectedIndex="0">
+                <System:String>Dec</System:String>
+                <System:String>Hex</System:String>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Window>

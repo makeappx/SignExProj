@@ -4,20 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SignExProj"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="SignExProj.MainWindow"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="window" x:Class="SignExProj.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="340" Width="500" WindowStyle="ToolWindow">
+        Title="MainWindow" Height="170" Width="420" WindowStyle="ToolWindow" MinWidth="450" MinHeight="230">
     <Grid>
-        <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="23" Margin="30,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" ToolTip="Bytes for scan"/>
-        <TextBox x:Name="Text2" HorizontalAlignment="Left" Height="23" Margin="227,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" ToolTip="Bytes for write"/>
-        <Button Content="Inject" HorizontalAlignment="Left" Margin="380,262,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="BaseBox" HorizontalAlignment="Left" Margin="405,230,0,0" VerticalAlignment="Top" Width="50" SelectedIndex="0">
-            <System:String>Dec</System:String>
-            <System:String>Hex</System:String>
-        </ComboBox>
-        <Label Content="⇆" HorizontalAlignment="Left" Margin="204,227,0,0" VerticalAlignment="Top" MouseDown="Label_MouseDown"/>
-        <Button Click="Button_Click_1" Content="Select" HorizontalAlignment="Left" Margin="4,26,0,0" VerticalAlignment="Top" Width="58" BorderBrush="#FF707070" Background="{x:Null}"/>
-        <Label Content="Current process:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label x:Name="ProcessLabel" Content="" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="85"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="sp" Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" VerticalAlignment="Top" Height="30" HorizontalAlignment="Stretch">
+                <Label Content="Current process:" VerticalAlignment="Center"/>
+                <Button x:Name="ProcessLabel" Click="Button_processes" VerticalAlignment="Center" Content="Select" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="Text1" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="" AcceptsReturn="True" Width="150" ToolTip="Value for scan" TextChanged="Text1_TextChanged"/>
+                    <StackPanel Margin="10,0,0,0">
+                        <Button Content="Search" VerticalAlignment="Center" Width="50" Background="{x:Null}" Click="Button_search"/>
+                        <Button Content="Next" VerticalAlignment="Center" Width="50" Background="{x:Null}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="bottomPanel" Orientation="Horizontal" Margin="0,10,0,0">
+                    <ComboBox x:Name="ValueBox" VerticalAlignment="Center" Width="59" SelectedIndex="0" Grid.Row="1">
+                        <System:String>Value</System:String>
+                        <System:String>Array</System:String>
+                    </ComboBox>
+                    <Label Content="in" VerticalAlignment="Center" Grid.Row="1"/>
+                    <ComboBox x:Name="BaseBox" VerticalAlignment="Center" Width="50" SelectedIndex="0">
+                        <System:String>Dec</System:String>
+                        <System:String>Hex</System:String>
+                    </ComboBox>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <Label x:Name="address_count" Content="Count:" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <ListView x:Name="addresses_list" Grid.Column="2" Grid.Row="1" Margin="0,10,0,0" MouseDoubleClick="Adresses_list_MouseDoubleClick"/>
+        <StackPanel Grid.Column="3" Grid.Row="1">
+            <Button Content="Unchanged" Width="68" Background="{x:Null}" Height="20" Click="Button_unchanged"/>
+            <Button Content="Changed" Width="68" Background="{x:Null}" Height="20" Click="Button_changed"/>
+            <Button Content="Increased" Width="68" Background="{x:Null}" Height="20"/>
+            <Button Content="Decreased" Width="68" Background="{x:Null}" Height="20"/>
+        </StackPanel>
     </Grid>
 </Window>
