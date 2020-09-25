@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SignExProj"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="window" x:Class="SignExProj.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="170" Width="420" WindowStyle="ToolWindow" MinWidth="450" MinHeight="230">
@@ -29,7 +28,7 @@
                     <TextBox x:Name="Text1" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="" AcceptsReturn="True" Width="150" ToolTip="Value for scan" TextChanged="Text1_TextChanged"/>
                     <StackPanel Margin="10,0,0,0">
                         <Button Content="Search" VerticalAlignment="Center" Width="50" Background="{x:Null}" Click="Button_search"/>
-                        <Button Content="Next" VerticalAlignment="Center" Width="50" Background="{x:Null}"/>
+                        <Button Content="Next" VerticalAlignment="Center" Width="50" Background="{x:Null}" Click="Button_next"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="bottomPanel" Orientation="Horizontal" Margin="0,10,0,0">
@@ -51,8 +50,8 @@
         <StackPanel Grid.Column="3" Grid.Row="1">
             <Button Content="Unchanged" Width="68" Background="{x:Null}" Height="20" Click="Button_unchanged"/>
             <Button Content="Changed" Width="68" Background="{x:Null}" Height="20" Click="Button_changed"/>
-            <Button Content="Increased" Width="68" Background="{x:Null}" Height="20"/>
-            <Button Content="Decreased" Width="68" Background="{x:Null}" Height="20"/>
+            <Button Content="Increased" Width="68" Background="{x:Null}" Height="20" Click="Button_increased"/>
+            <Button Content="Decreased" Width="68" Background="{x:Null}" Height="20" Click="Button_decreased"/>
         </StackPanel>
     </Grid>
 </Window>

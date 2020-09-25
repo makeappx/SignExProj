@@ -21,6 +21,7 @@ namespace SignExProj
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(Text1.Text)) return;
             byte[] bytes_write;
             int? value;
             if (ValueBox.SelectedIndex == 1)

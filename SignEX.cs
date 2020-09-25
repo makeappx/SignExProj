@@ -61,7 +61,7 @@ public class SignEX
             long x = -1;
             while (++x < (long)zero.RegionSize)
                 if (numArray[(int)(x / maxsize)][x % maxsize] == bytes_scan[0])
-                    for (int i = 0; i < bytes_scan.Length; i++)
+                    for (int i = 0; i < bytes_scan.Length && i + x < (long)zero.RegionSize; i++) 
                         if (numArray[(int)((i + x) / maxsize)][(i + x) % maxsize] != bytes_scan[i])
                         {
                             num = 0;
@@ -79,6 +79,7 @@ public class SignEX
                         }
         
         }
+        GC.Collect();
         return result;
     }
     public bool WriteBytes(IntPtr address, byte[] bytes_write)

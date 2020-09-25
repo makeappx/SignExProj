@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <ListView SelectionMode="Single" x:Name="ProcessesList" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" SelectionChanged="ProcessesList_SelectionChanged">
+        <ListView SelectionMode="Single" x:Name="ProcessesList" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" SelectionChanged="ProcessesList_SelectionChanged" MouseDoubleClick="ProcessesList_MouseDoubleClick">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <Label MouseDown="CloseP">Close</Label>

@@ -60,11 +60,24 @@ namespace SignExProj
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(Readonly.Content == "true")
+            if (Readonly.Content == "true") 
             {
                 MessageBox.Show("You can't choose readonly process");
                 return;
             }
+            if (process == null) return;
+            Application.Current.Properties["process"] = process;
+            Close();
+        }
+
+        private void ProcessesList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (Readonly.Content == "true")
+            {
+                MessageBox.Show("You can't choose readonly process");
+                return;
+            }
+            if (process == null) return;
             Application.Current.Properties["process"] = process;
             Close();
         }
