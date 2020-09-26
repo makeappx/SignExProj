@@ -42,7 +42,7 @@ namespace SignExProj
         }
         private void Button_search(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             if (process == null)
             {
                 MessageBox.Show("You have to select process first");
@@ -88,7 +88,7 @@ namespace SignExProj
                 addresses_list.ItemsSource = s.SignScan(bytes_scan).Select(x =>
                 ((IntPtr)x, value == null ? Text1.Text : value.ToString()));
             Updatelist();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
         private void Adresses_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -122,7 +122,7 @@ namespace SignExProj
         }
         private void Button_unchanged(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             List<(IntPtr, string)> result = new List<(IntPtr, string)>();
             foreach ((IntPtr, string) value in addresses_list.Items)
             {
@@ -137,11 +137,11 @@ namespace SignExProj
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
         private void Button_changed(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             List<(IntPtr, string)> result = new List<(IntPtr, string)>();
             foreach ((IntPtr, string) value in addresses_list.Items)
             {
@@ -161,11 +161,11 @@ namespace SignExProj
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
         private void Button_next(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             List<(IntPtr, string)> result = new List<(IntPtr, string)>();
             byte[] bytes_scan;
             int? value; 
@@ -205,11 +205,11 @@ namespace SignExProj
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
         private void Button_increased(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             List<(IntPtr, string)> result = new List<(IntPtr, string)>();
             foreach ((IntPtr, string) value in addresses_list.Items)
             {
@@ -229,11 +229,11 @@ namespace SignExProj
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
         private void Button_decreased(object sender, RoutedEventArgs e)
         {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             List<(IntPtr, string)> result = new List<(IntPtr, string)>();
             foreach ((IntPtr, string) value in addresses_list.Items)
             {
@@ -253,7 +253,7 @@ namespace SignExProj
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            //TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
         }
     }
 }
