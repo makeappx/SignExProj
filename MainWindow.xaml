@@ -54,4 +54,7 @@
             <Button Content="Decreased" Width="68" Background="{x:Null}" Height="20" Click="Button_decreased"/>
         </StackPanel>
     </Grid>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
 </Window>

@@ -17,4 +17,3 @@ C:\Users\burla\source\repos\SignExProj\SignExProj\obj\x64\Release\SignExProj.csp
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\x64\Release\SignExProj.csproj.CoreCompileInputs.cache
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\x64\Release\SignExProj.exe
 C:\Users\burla\source\repos\SignExProj\SignExProj\obj\x64\Release\SignExProj.pdb
-C:\Users\burla\source\repos\SignExProj\SignExProj\bin\x64\Release\SignExProj.xml
