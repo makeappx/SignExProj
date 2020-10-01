@@ -155,12 +155,25 @@ namespace SignExProj
                 {
                     byte[] current = GetBytes(value);
                     byte[] changed = s.CheckValue(value.Item1, current.Length);
-                    if (!current.SequenceEqual(changed))
+                    bool add = false;
+                    switch(((Button)e.Source).Content)
                     {
+                        case "Changed":
+                            add = !current.SequenceEqual(changed);
+                            break;
+                        case "Increased":
+                            add = BitConverter.ToInt32(changed, 0) > BitConverter.ToInt32(current, 0);
+                            break;
+                        case "Decreased":
+                            add = BitConverter.ToInt32(changed, 0) < BitConverter.ToInt32(current, 0);
+                            break;
+                    }
+                    if(add)
                         if (ValueBox.SelectedIndex == 1)
                             result.Add((value.Item1, string.Join("",
                                 changed.Select(x => x.ToString(BaseBox.SelectedIndex == 1 ? "X" : "") + " "))));
-                    }
+                        else result.Add((value.Item1, BitConverter.ToInt32(changed, 0)
+                                                                 .ToString(BaseBox.SelectedIndex == 1 ? "X" : "")));
                 }
                 catch { }
             }
@@ -213,54 +226,6 @@ namespace SignExProj
             foreach ((IntPtr, string) val in addresses_list.Items)
                 if (bytes_scan.SequenceEqual(s.CheckValue(val.Item1, bytes_scan.Length)))
                     result.Add((val.Item1, Text1.Text));
-            addresses_list.ItemsSource = result;
-            Updatelist();
-            GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-        }
-        private void Button_increased(object sender, RoutedEventArgs e)
-        {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-            List<(IntPtr, string)> result = new List<(IntPtr, string)>();
-            foreach ((IntPtr, string) value in addresses_list.Items)
-            {
-                try {
-                    byte[] current = GetBytes(value);
-                    byte[] changed = s.CheckValue(value.Item1, current.Length);
-                    if (BitConverter.ToInt32(changed, 0) > BitConverter.ToInt32(current, 0))
-                    {
-                        if (ValueBox.SelectedIndex == 1)
-                            result.Add((value.Item1, string.Join("",
-                                changed.Select(x => x.ToString(BaseBox.SelectedIndex == 1 ? "X" : "") + " "))));
-                    }
-                }
-                catch
-                {}
-            }
-            addresses_list.ItemsSource = result;
-            Updatelist();
-            GC.Collect();
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-        }
-        private void Button_decreased(object sender, RoutedEventArgs e)
-        {
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-            List<(IntPtr, string)> result = new List<(IntPtr, string)>();
-            foreach ((IntPtr, string) value in addresses_list.Items)
-            {
-                try
-                {
-                    byte[] current = GetBytes(value);
-                    byte[] changed = s.CheckValue(value.Item1, current.Length);
-                    if (BitConverter.ToInt32(changed, 0) < BitConverter.ToInt32(current, 0))
-                    {
-                        if (ValueBox.SelectedIndex == 1)
-                            result.Add((value.Item1, string.Join("",
-                                changed.Select(x => x.ToString(BaseBox.SelectedIndex == 1 ? "X" : "") + " "))));
-                    }
-                }
-                catch {}
-            }
             addresses_list.ItemsSource = result;
             Updatelist();
             GC.Collect();
